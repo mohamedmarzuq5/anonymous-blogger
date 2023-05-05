@@ -1,118 +1,285 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from "next/image";
+import Link from "next/link";
+import { Poppins, Epilogue, Space_Mono } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: "--font-poppins"
+})
+
+const epilogue = Epilogue({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: "--font-epilogue"
+})
+
+const space_mono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: "--font-space_mono"
+})
 
 export default function Home() {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={`${epilogue.variable} font-serif flex min-h-screen flex-col items-center justify-between px-20 pt-20 gap-20 overflow-x-hidden`}
     >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <div className="max-w-6xl w-full">
+        <header className="flex justify-between pb-5">
+          <h1 className={`${space_mono.variable} font-mono font-bold text-4xl`}>
+            Anonymous<span className="text-base"> </span>Blogger
+          </h1>
+
+          <nav className="flex font-normal">
+            <ul className="flex items-end space-x-5 text-2xl">
+              <Link href="/about">
+                <li key="about">About</li>
+              </Link>
+              <Link href="/new-blog">
+                <li key="new-blog" className="flex gap-x-1">
+                  New Blog{" "}
+                  <Image
+                    src="/plus-square.svg"
+                    width="25"
+                    height="25"
+                    alt="square-icon"
+                  />
+                </li>
+              </Link>
+              <Link href="/search">
+                <li key="search" className="flex gap-x-1">
+                  Search{" "}
+                  <Image
+                    src="/search-icon.svg"
+                    width="25"
+                    height="25"
+                    alt="search-icon"
+                  />
+                </li>
+              </Link>
+            </ul>
+          </nav>
+        </header>
+        <svg
+          className="w-full"
+          height="2"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            y="0.182129"
+            className="w-full"
+            height="0.825671"
+            rx="0.412835"
+            fill="#252C39"
+          />
+        </svg>
+      </div>
+
+      <div className="max-w-6xl w-full">
+        <h2 className="font-semibold text-4xl flex gap-3 z-10">
+          Trending Blogs
+          <img src="/arrow-right.svg"></img>
+        </h2>
+        <div className="w-[305px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-purple-900 to-fuchsia-900 rounded-2xl mb-9"></div>
+
+        <div className="flex gap-9 justify-between">
+          <div className="rounded-2xl bg-gradient-to-r from-[#B721FF] to-[#21D4FD] p-[3px] shadow-xl">
+            <a className="flex rounded-2xl text-[#CCCCCC] bg-[#1E1E1E] p-4 sm:p-6 lg:p-7" href="">
+              <div className="flex flex-col justify-between gap-3">
+                <h3 className="text-lg font-bold sm:text-2xl">
+                  How To Defeat Browser
+                </h3>
+
+                <p className={`${poppins.variable} font-sans text-lg/[25px] font-normal`}>
+                  Lorem ipsum dolor sit amet consectetur Lorem
+                  ipsum dolor sit amet consectetur Lorem
+                  iLorem ipsum dolor sit amet consecteturLore
+                </p>
+
+                <p className={`${space_mono.variable} font-mono text-xl font-normal tracking-normal`}>
+                  999<span className="text-xs"> </span>Views • 2<span className="text-xs"> </span>days<span className="text-xs"> </span>ago
+                </p>
+              </div>
+            </a>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-r from-[#EB90FF] to-[#9a49e1cc] p-[3px] shadow-xl">
+            <a className="flex rounded-2xl text-[#CCCCCC] bg-[#1E1E1E] p-4 sm:p-6 lg:p-7" href="">
+              <div className="flex flex-col justify-between gap-3">
+                <h3 className="text-lg font-bold sm:text-2xl">
+                  How To Defeat Browser
+                </h3>
+
+                <p className={`${poppins.variable} font-sans text-lg/[25px] font-normal`}>
+                  Lorem ipsum dolor sit amet consectetur Lorem
+                  ipsum dolor sit amet consectetur Lorem
+                  iLorem ipsum dolor sit amet consecteturLore
+                </p>
+
+                <p className={`${space_mono.variable} font-mono text-xl font-normal tracking-normal`}>
+                  999<span className="text-xs"> </span>Views • 2<span className="text-xs"> </span>days<span className="text-xs"> </span>ago
+                </p>
+              </div>
+            </a>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-r from-[#FA71CD] to-[#C471F5] p-[3px] shadow-xl">
+            <a className="flex rounded-2xl text-[#CCCCCC] bg-[#1E1E1E] p-4 sm:p-6 lg:p-7" href="">
+              <div className="flex flex-col justify-between gap-3">
+                <h3 className="text-lg font-bold sm:text-2xl">
+                  How To Defeat Browser
+                </h3>
+
+                <p className={`${poppins.variable} font-sans text-lg/[25px] font-normal`}>
+                  Lorem ipsum dolor sit amet consectetur Lorem
+                  ipsum dolor sit amet consectetur Lorem
+                  iLorem ipsum dolor sit amet consecteturLore
+                </p>
+
+                <p className={`${space_mono.variable} font-mono text-xl font-normal tracking-normal`}>
+                  999<span className="text-xs"> </span>Views • 2<span className="text-xs"> </span>days<span className="text-xs"> </span>ago
+                </p>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="max-w-6xl w-full">
+        <h2 className="font-semibold text-4xl flex gap-3 z-10">
+          Trending Blogs
+          <img src="/arrow-right.svg"></img>
+        </h2>
+        <div className="w-[305px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-[#4facfe80] to-[#00f2fe80] rounded-2xl mb-9"></div>
+
+        <div className="flex gap-9 justify-between">
+          <div className="rounded-2xl bg-gradient-to-r from-[#B721FF] to-[#21D4FD] p-[3px] shadow-xl">
+            <a className="flex flex-col rounded-2xl text-[#CCCCCC] bg-[#1E1E1E]" href="">
+              <Image src="/topic-image.png" width="75" height="75" className="w-full" alt="image" />
+              <div className="flex flex-col justify-between gap-3 p-4 sm:p-6 lg:p-7">
+                <h3 className="text-lg font-bold sm:text-2xl">
+                  How To Defeat Browser
+                </h3>
+                <div className={`flex justify-between ${space_mono.variable} font-mono font-normal`}>
+                  <div>
+                    <p className='text-lg/[25px] text-[#979797]'>Blogs</p>
+
+                    <p className='text-2xl text-white'>256</p>
+                  </div>
+                  <div className="text-right">
+                    <p className='text-lg/[25px] text-[#979797]'>Viewers</p>
+
+                    <p className='text-2xl text-white'>256</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-r from-[#EB90FF] to-[#9a49e1cc] p-[3px] shadow-xl">
+            <a className="flex flex-col rounded-2xl text-[#CCCCCC] bg-[#1E1E1E]" href="">
+              <Image src="/topic-image.png" width="150" height="150" className="w-full" alt="image" />
+              <div className="flex flex-col justify-between gap-3 p-4 sm:p-6 lg:p-7">
+                <h3 className="text-lg font-bold sm:text-2xl">
+                  How To Defeat Browser
+                </h3>
+                <div className={`flex justify-between ${space_mono.variable} font-mono font-normal`}>
+                  <div>
+                    <p className='text-lg/[25px] text-[#979797]'>Blogs</p>
+
+                    <p className='text-2xl text-white'>256</p>
+                  </div>
+                  <div className="text-right">
+                    <p className='text-lg/[25px] text-[#979797]'>Viewers</p>
+
+                    <p className='text-2xl text-white'>256</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-r from-[#FA71CD] to-[#C471F5] p-[3px] shadow-xl">
+            <a className="flex flex-col rounded-2xl text-[#CCCCCC] bg-[#1E1E1E]" href="">
+              <Image src="/topic-image.png" width="75" height="75" className="w-full" alt="image" />
+              <div className="flex flex-col justify-between gap-3 p-4 sm:p-6 lg:p-7">
+                <h3 className="text-lg font-bold sm:text-2xl">
+                  How To Defeat Browser
+                </h3>
+                <div className={`flex justify-between ${space_mono.variable} font-mono font-normal`}>
+                  <div>
+                    <p className='text-lg/[25px] text-[#979797]'>Blogs</p>
+
+                    <p className='text-2xl text-white'>256</p>
+                  </div>
+                  <div className="text-right">
+                    <p className='text-lg/[25px] text-[#979797]'>Viewers</p>
+
+                    <p className='text-2xl text-white'>256</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="max-w-6xl w-full">
+        <div
+          className=" w-full rounded-2xl bg-gradient-to-r from-[#6157FF] to-[#EE49FD] p-[3px] shadow-xl"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <div className="w-full h-full bg-[#0A0118] rounded-2xl">
+            <div className="flex rounded-2xl text-[#CCCCCC] bg-gradient-to-r from-[#6157ff33] to-[#ee49fd33] p-4 sm:p-6 lg:p-10 lg:px-16 w-full flex-col justify-between gap-5">
+              <h3 className="text-lg font-bold sm:text-2xl">
+                Join the News Letter!
+              </h3>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+              <p className={`${poppins.variable} font-sans text-lg/[25px] font-medium`}>
+                Every week you will receive a best blog of that week. Included with some tech updates.
+              </p>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+              <form>
+                <label className="relative block">
+                  <span className="sr-only">Search</span>
+                  <span className="absolute inset-y-0 right-0 flex items-center">
+                    <button type="submit" className={`${poppins.variable} font-sans font-normal text-lg bg-gradient-to-r from-[#6157FF] to-[#EE49FD] rounded-lg w-32 h-12 mr-5 tracking-tighter text-[#FFFFFF]`}>Subscribe</button>
+                  </span>
+                  <span className="sr-only">Search</span>
+                  <input id="email" placeholder="tim@apple.com" type="email" name="email" className={`placeholder:${poppins.variable} font-sans placeholder:font-normal text-2xl block bg-[#1E1E1E] w-full border rounded-md py-5 px-5 shadow-sm placeholder:text-[#ffffff85] focus:outline-none ring-[#FFFFFF] ring-2`} />
+                </label>
+              </form>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+              <p className="text-2xl font-normal tracking-normal">
+                99 Subscribers
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="max-w-6xl w-full flex flex-col gap-9">
+
+        <svg
+          className="w-full"
+          height="2"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+          <rect
+            y="0.182129"
+            className="w-full"
+            height="0.825671"
+            rx="0.412835"
+            fill="#252C39"
+          />
+        </svg>
+
+        <footer className="pb-9">
+          <p className={`${space_mono.variable} font-mono font-bold text-lg text-center`}>
+            No Copyright Issues. Feel free to Copy :) <br />
+            Design and built by Mohamed
           </p>
-        </a>
+        </footer>
       </div>
     </main>
-  )
+  );
 }

@@ -1,3 +1,5 @@
+import { fontFamily } from 'tailwindcss/defaultTheme'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,6 +9,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mono: ['var(--font-space_mono)', ...fontFamily.mono],
+        serif: ['var(--font-epilogue)', ...fontFamily.serif],
+        sans: ['var(--font-poppins)', ...fontFamily.sans],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

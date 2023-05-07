@@ -4,7 +4,7 @@ export default function TopicCard({color, topic, counts, space_mono}) {
     return (
         <div className={`rounded-2xl ${color} p-[3px] shadow-xl w-full`}>
             <a className="flex lg:flex-col justify-between flex-row rounded-2xl text-[#CCCCCC] bg-[#1E1E1E]" href="">
-                <Image src="/topic-image.png" width="150" height="150" className="w-40 sm:w-52 lg:w-full aspect-auto lg:rounded-t-2xl lg:rounded-b-none rounded-s-2xl" alt="image" />
+                <Image src="/assets/images/topic-image.png" width="150" height="150" className="w-40 sm:w-52 lg:w-full aspect-auto lg:rounded-t-2xl lg:rounded-b-none rounded-s-2xl" alt="topic-image" />
                 <div className="flex flex-col justify-between gap-3 p-4 sm:p-6 lg:p-7">
                     <h3 className="text-base font-bold sm:text-2xl">
                         {topic}

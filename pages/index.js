@@ -1,12 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
 import { Poppins, Epilogue, Space_Mono } from 'next/font/google'
 import { useState } from "react";
 import BlogCard from "@/components/blog-card";
 import TopicCard from "@/components/topic-card";
 import Footer from "@/components/footer";
 import NavBar from "@/components/navbar";
-import NewsLetter from "@/components/news-letter";
+import NewsLetter from "@/components/home/news-letter";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -48,12 +47,25 @@ export default function Home() {
       className={`${epilogue.variable} font-serif flex min-h-screen flex-col items-center justify-between px-5 lg:px-10 xl:px-20 pt-10 xl:pt-20 gap-20 overflow-x-hidden text-[#FFFFFF]`}
     >
 
-      <NavBar isHome={true} isOpen={isOpen} eventIsOpen={setIsOpen} space_mono={space_mono.variable} />
+      <div
+        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+        aria-hidden="true"
+      >
+        <div
+          className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+          style={{
+            clipPath:
+              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+          }}
+        />
+      </div>
+
+      <NavBar navData={{ link: ['/', '/new-blog'], text: ['Home', 'New Blog'] }} isOpen={isOpen} eventIsOpen={setIsOpen} space_mono={space_mono.variable} />
 
       <div className="max-w-6xl w-full">
         <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl flex gap-3 z-10">
           Trending Blogs
-          <img className="w-[20px] lg:w-[30px]" src="/arrow-right.svg" />
+          <Image className="w-[20px] lg:w-[30px]" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
         </h2>
         <hr className="xl:w-[305px] lg:w-[260px] w-[210px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-purple-900 to-fuchsia-900 rounded-2xl mb-9 border-t-0" />
 
@@ -67,7 +79,7 @@ export default function Home() {
       <div className="max-w-6xl w-full">
         <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl flex gap-3 z-10">
           Explore Topics
-          <img className="w-[20px] xl:w-[30px]" src="/arrow-right.svg" />
+          <Image className="w-[20px] xl:w-[30px]" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
         </h2>
         <hr className="w-[205px] lg:w-[250px] xl:w-[305px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-[#4facfe80] to-[#00f2fe80] rounded-2xl mb-9 border-t-0" />
         <div className="flex justify-between lg:flex-row flex-col gap-9">
@@ -76,7 +88,7 @@ export default function Home() {
           <TopicCard color={"bg-gradient-to-r from-[#FA71CD] to-[#C471F5]"} topic={'Artificial Intelligence'} counts={count} space_mono={space_mono.variable} />
         </div>
       </div>
-      
+
       <NewsLetter poppins={poppins.variable} />
 
       <Footer font={{ space_mono: space_mono.variable, epilogue: epilogue.variable }} />

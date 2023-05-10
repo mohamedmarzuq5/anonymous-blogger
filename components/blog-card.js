@@ -10,7 +10,7 @@ export default function BlogCard({ color, content, font }) {
    
     return (
         <div
-            className={`rounded-2xl ${color} p-[3px] shadow-xl`}
+            className={`rounded-2xl ${color} p-[3px] shadow-xl transition-transform ease-in-out duration-300 hover:scale-[1.03]`}
         >
             <a
                 className="flex rounded-2xl text-[#CCCCCC] bg-[#1E1E1E] p-6 sm:p-6 lg:p-7"

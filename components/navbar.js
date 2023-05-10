@@ -31,8 +31,8 @@ export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
                                 {navData.text[1] === 'New Blog' ? <Image
                                     className="lg:w-[25px]"
                                     src="/assets/icons/plus-square.svg"
-                                    width={25}
-                                    height={25}
+                                    width={20}
+                                    height={20}
                                     alt="square-icon"
                                 />:""}
                             </Link>
@@ -42,8 +42,8 @@ export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
                                 <Image
                                     className="lg:w-[25px]"
                                     src="/assets/icons/search-icon.svg"
-                                    width={25}
-                                    height={25}
+                                    width={20}
+                                    height={20}
                                     alt="search-icon"
                                 />
                             </a>

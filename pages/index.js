@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Poppins, Epilogue, Space_Mono } from 'next/font/google'
 import { useState } from "react";
 import BlogCard from "@/components/blog-card";
@@ -52,11 +53,14 @@ export default function Home() {
       <NavBar navData={{ link: ['/', '/new-blog'], text: ['Home', 'New Blog'] }} isOpen={isOpen} eventIsOpen={setIsOpen} space_mono={space_mono.variable} />
 
       <div className="max-w-6xl w-full">
-        <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl flex gap-3 z-10">
-          Trending Blogs
-          <Image className="w-[20px] lg:w-[30px]" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
-        </h2>
-        <hr className="xl:w-[305px] lg:w-[260px] w-[210px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-purple-900 to-fuchsia-900 rounded-2xl mb-9 border-t-0" />
+        <Link href='/blogs' className='group'>
+          <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl flex gap-3 z-10">
+            Trending Blogs
+            <Image className="w-[20px] lg:w-[30px] transition-transform ease-in-out duration-300 group-hover:translate-x-1 lg:group-hover:translate-x-2" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
+          </h2>
+          <hr className="xl:w-[305px] lg:w-[260px] w-[210px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-purple-900 to-fuchsia-900 rounded-2xl mb-9 border-t-0" />
+        </Link>
+
 
         <div className="flex gap-9 lg:gap-5 xl:gap-9 justify-between lg:flex-row flex-col">
           <BlogCard color={"bg-gradient-to-r from-[#B721FF] to-[#21D4FD]"} content={blogContent} font={font} />
@@ -66,11 +70,14 @@ export default function Home() {
       </div>
 
       <div className="max-w-6xl w-full">
+        <Link href="/topics" className='group'>
         <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl flex gap-3 z-10">
           Explore Topics
-          <Image className="w-[20px] xl:w-[30px]" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
+          <Image className="w-[20px] lg:w-[30px] transition-transform ease-in-out duration-300 group-hover:translate-x-1 lg:group-hover:translate-x-2" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
         </h2>
-        <hr className="w-[205px] lg:w-[250px] xl:w-[305px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-[#4facfe80] to-[#00f2fe80] rounded-2xl mb-9 border-t-0" />
+          <hr className="w-[205px] lg:w-[258px] xl:w-[305px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-[#4facfe80] to-[#00f2fe80] rounded-2xl mb-9 border-t-0" />
+        </Link>
+
         <div className="flex justify-between lg:flex-row flex-col gap-9">
           <TopicCard color={"bg-gradient-to-r from-[#B721FF] to-[#21D4FD]"} topic={'Artificial Intelligence'} counts={count} space_mono={space_mono.variable} />
           <TopicCard color={"bg-gradient-to-r from-[#EB90FF] to-[#9a49e1cc]"} topic={'Artificial Intelligence'} counts={count} space_mono={space_mono.variable} />

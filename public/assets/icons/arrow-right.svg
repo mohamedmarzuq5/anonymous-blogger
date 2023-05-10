@@ -5,7 +5,7 @@
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
 >
-    <g clip-path="url(#clip0_306_1235)">
+    <g className="hidden" clip-path="url(#clip0_306_1235)">
         <path
             d="M-3.77246 17.7998H29.2275"
             stroke="#E5E5E5"

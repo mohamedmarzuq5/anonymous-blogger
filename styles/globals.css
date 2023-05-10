@@ -26,3 +26,23 @@ body {
         rgb(var(--background-start-rgb));*/
     background-color: #0a0118;
 }
+
+*::selection {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+textarea::selection {
+    background-color: rgba(0, 0, 0, 0.83);
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Line Animations */
+.continuous-line {
+    background: linear-gradient(currentColor 0 0) var(--d, 201%) 100% /200% 1.5px no-repeat;
+    transition: 0.5s;
+    width: fit-content;
+  }
+  .continuous-line:hover {
+    --d: -101%;
+  }

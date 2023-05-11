@@ -54,7 +54,7 @@ export default function Home() {
 
       <div className="max-w-6xl w-full">
         <Link href='/blogs' className='group inline-block'>
-          <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl opacity-90 group-hover:opacity-100 flex gap-3 z-10">
+          <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl opacity-80 group-hover:opacity-100 flex gap-3 z-10">
             Trending Blogs
             <Image className="w-[20px] lg:w-[30px] transition-transform ease-in-out duration-300 group-hover:translate-x-1 lg:group-hover:translate-x-2" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
           </h2>
@@ -71,7 +71,7 @@ export default function Home() {
 
       <div className="max-w-6xl w-full">
         <Link href="/topics" className='group inline-block'>
-        <h2 className="font-semibold lg:text-3xl xl:text-4xl opacity-90 group-hover:opacity-100 text-2xl flex gap-3 z-10">
+        <h2 className="font-semibold lg:text-3xl xl:text-4xl opacity-80 group-hover:opacity-100 text-2xl flex gap-3 z-10">
           Explore Topics
           <Image className="w-[20px] lg:w-[30px] transition-transform ease-in-out duration-300 group-hover:translate-x-1 lg:group-hover:translate-x-2" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
         </h2>

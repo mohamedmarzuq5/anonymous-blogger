@@ -52,13 +52,13 @@ export default function Home() {
 
       <NavBar navData={{ link: ['/', '/new-blog'], text: ['Home', 'New Blog'] }} isOpen={isOpen} eventIsOpen={setIsOpen} space_mono={space_mono.variable} />
 
-      <div className="max-w-6xl w-full">
+      <div data-aos="fade-in" className="max-w-6xl w-full">
         <Link href='/blogs' className='group inline-block'>
-          <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl opacity-80 group-hover:opacity-100 flex gap-3 z-10">
+          <h2 className="font-semibold lg:text-3xl xl:text-4xl text-2xl opacity-90 group-hover:opacity-100 flex gap-3 z-10">
             Trending Blogs
             <Image className="w-[20px] lg:w-[30px] transition-transform ease-in-out duration-300 group-hover:translate-x-1 lg:group-hover:translate-x-2" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
           </h2>
-          <hr className="xl:w-[305px] lg:w-[260px] w-[210px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-purple-900 to-fuchsia-900 group-hover:from-purple-800 group-hover:to-fuchsia-800 rounded-2xl mb-9 border-t-0" />
+          <hr className="xl:w-[305px] lg:w-[260px] w-[210px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-[#591c87da] to-[#701a75d7] group-hover:from-[#581c87] group-hover:to-[#701a75] rounded-2xl mb-9 border-t-0" />
         </Link>
 
 
@@ -69,13 +69,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="max-w-6xl w-full">
+      <div data-aos="fade-in" className="max-w-6xl w-full">
         <Link href="/topics" className='group inline-block'>
-        <h2 className="font-semibold lg:text-3xl xl:text-4xl opacity-80 group-hover:opacity-100 text-2xl flex gap-3 z-10">
+        <h2 className="font-semibold lg:text-3xl xl:text-4xl opacity-90 group-hover:opacity-100 text-2xl flex gap-3 z-10">
           Explore Topics
           <Image className="w-[20px] lg:w-[30px] transition-transform ease-in-out duration-300 group-hover:translate-x-1 lg:group-hover:translate-x-2" width={25} height={25} src="/assets/icons/arrow-right.svg" alt='arrow-right_icon' />
         </h2>
-          <hr className="w-[205px] lg:w-[258px] xl:w-[305px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-[#4facfe80] to-[#00f2fe80] group-hover:from-[#4facfe9e] group-hover:to-[#00f1fe9e] rounded-2xl mb-9 border-t-0" />
+          <hr className="w-[205px] lg:w-[258px] xl:w-[305px] -mt-[5px] z-0 h-[5px] bg-gradient-to-r from-[#4facfe80] to-[#00f2fe80] group-hover:from-[#4facfe93] group-hover:to-[#00f1fe93] rounded-2xl mb-9 border-t-0" />
         </Link>
 
         <div className="flex justify-between lg:flex-row flex-col gap-9">

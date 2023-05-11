@@ -111,18 +111,25 @@ export default function Home() {
         space_mono={space_mono.variable}
       />
 
-      <div className="max-w-6xl w-full">
+      <div className="max-w-6xl w-full" data-aos="fade-in">
         <div className="isolate sm:px-6 lg:px-8 py-3 sm:py-10 ">
           <div className="mx-auto w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2
+              className="text-3xl font-bold tracking-tight sm:text-4xl"
+              data-aos="fade-down"
+            >
               Write a New Blog!
             </h2>
-            <p className="mt-2 text-lg leading-8 text-gray-400">
+            <p
+              className="mt-2 text-lg leading-8 text-gray-400"
+              data-aos="fade-in"
+            >
               Let the world know about what's in your mind without publishing
               your identity
             </p>
           </div>
           <form
+            data-aos="fade-up"
             action=""
             onSubmit={(event) => {
               requestNewBlog(
@@ -173,7 +180,6 @@ export default function Home() {
               </button>
             </div>
           </form>
-          <Toaster position="bottom-right" />
         </div>
       </div>
 
@@ -183,6 +189,8 @@ export default function Home() {
           epilogue: epilogue.variable,
         }}
       />
+
+      <Toaster position="bottom-right" />
     </main>
   );
 }

@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
     return (
-        <div className="max-w-6xl w-full">
+        <div data-aos="fade-in" className="max-w-6xl w-full">
             <nav className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
                 <Link href="/" className="flex items-center">
                     <h1 className={`${space_mono} lg:text-4xl md:text-2xl font-mono self-center text-2xl font-semibold whitespace-nowrap flex gap-2 lg:gap-3`}><span>Anonymous</span> <span>Blogger</span></h1>
@@ -15,7 +15,7 @@ export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
                 <div className={`${!isOpen && 'hidden'} md:static w-full md:block md:w-auto`} id="navbar-default">
                     <ul className="font-normal  lg:text-2xl justify-end flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-5 md:mt-0 md:border-0 md:bg-transparent bg-[#1E1E1E] border-[#A652C8] border-2">
                        
-                        <li>
+                        <li data-aos="fade-in" data-aos-duration="1500">
                             <Link href={navData.link[0]} className="flex gap-x-1 py-2 pl-3 pr-4 rounded md:border-0 md:p-0 opacity-100 hover:opacity-75 md:hover:bg-transparent"><span className="continuous-line">{navData.text[0]}</span>{" "}
                                 {navData.text[1] === 'New Blog' ? <Image
                                     className="lg:w-[25px] hidden"
@@ -26,7 +26,7 @@ export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
                                 />:""}
                             </Link>
                         </li>
-                        <li>
+                        <li data-aos="fade-in" data-aos-duration="2000">
                             <Link href={navData.link[1]} className="flex gap-x-1 py-2 pl-3 pr-4 rounded md:border-0 md:p-0 opacity-100 hover:opacity-75 md:hover:bg-transparent"><span className="continuous-line">{navData.text[1]}</span>{" "}
                                 {navData.text[1] === 'New Blog' ? <Image
                                     className="lg:w-[25px]"
@@ -37,8 +37,8 @@ export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
                                 />:""}
                             </Link>
                         </li>
-                        <li>
-                            <a href="#" className="py-2 pl-3 pr-4 rounded md:border-0 md:p-0 opacity-100 hover:opacity-75 md:hover:bg-transparent flex gap-x-1"><span className="continuous-line">Search</span>{" "}
+                        <li data-aos="fade-in" data-aos-duration="2500">
+                            <Link  href="#" className="py-2 pl-3 pr-4 rounded md:border-0 md:p-0 opacity-100 hover:opacity-75 md:hover:bg-transparent flex gap-x-1"><span className="continuous-line">Search</span>{" "}
                                 <Image
                                     className="lg:w-[25px]"
                                     src="/assets/icons/search-icon.svg"
@@ -46,7 +46,7 @@ export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
                                     height={20}
                                     alt="search-icon"
                                 />
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>

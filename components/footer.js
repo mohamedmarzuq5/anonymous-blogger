@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer({ font }) {
   return (
     <footer data-aos="fade-in" className="max-w-6xl w-full flex flex-col gap-9">
@@ -9,7 +11,7 @@ export default function Footer({ font }) {
         >
           No Copyright Issues. Feel free to Copy{' '}
           <span className={`${font.epilogue} font-serif`}>:-)</span> <br />
-          Design and built by Mohamed 👨‍💻
+          Design and built by <Link className=" pb-[7px] underline underline-offset-2 hover:opacity-80" href={'https://twitter.com/mohamedmarzuq5'} target="blank">Mohamed</Link>👨‍💻
         </p>
       </div>
     </footer>

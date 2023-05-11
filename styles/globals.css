@@ -46,3 +46,14 @@ textarea::selection {
   .continuous-line:hover {
     --d: -101%;
   }
+
+  /* Developer Link animation */
+/* .underline-continuous-line {
+    z-index: 100;
+    background: linear-gradient(red 0 0) var(--d, 201%) 80% /200% 1.25px no-repeat;
+    transition: 0.5s;
+    width: fit-content;
+  }
+  .underline-continuous-line:hover {
+    --d: -101%;
+  } */

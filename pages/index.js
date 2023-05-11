@@ -50,7 +50,7 @@ export default function Home() {
 
       <BgEffect />
 
-      <NavBar navData={{ link: ['/', '/new-blog'], text: ['Home', 'New Blog'] }} isOpen={isOpen} eventIsOpen={setIsOpen} space_mono={space_mono.variable} />
+      <NavBar navData={{ link: ['/about', '/new-blog'], text: ['About', 'New Blog'] }} isOpen={isOpen} eventIsOpen={setIsOpen} space_mono={space_mono.variable} />
 
       <div data-aos="fade-in" className="max-w-6xl w-full">
         <Link href='/blogs' className='group inline-block'>

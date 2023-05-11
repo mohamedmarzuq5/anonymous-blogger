@@ -28,16 +28,14 @@ const space_mono = Space_Mono({
     variable: "--font-space_mono",
 });
 
-const requestNewBlog = async (event, handleTextInTextArea, blog, setIsTextAreaDisable) => {
+const requestNewBlog = async (event, handleTextInTextArea, blog, setIsFetching) => {
     event.preventDefault()
     if (blog.length < 99) {
-        toast.error(`🤷‍♂️ ${blog.length} chars only for a blog?`)
+        toast.error(`${blog.length} chars for a blog🤷‍♂️? \n Minimum 99 chars is required`)
     } else {
-        setIsTextAreaDisable(true)
+        setIsFetching(true)
         const toastId = toast.loading('Loading...')
         try {
-
-            handleTextInTextArea("");
             const addBlogToServer = await fetch(blogRequestURL, {
                 method: "POST",
                 headers: {
@@ -52,9 +50,10 @@ const requestNewBlog = async (event, handleTextInTextArea, blog, setIsTextAreaDi
                 throw new Error()
             }
 
-            
-            setIsTextAreaDisable(false)
-            toast.success("Will get approved by Admin", {
+            handleTextInTextArea("");
+            setIsFetching(false)
+
+            toast.success("Forwarded to Admin!", {
                 id: toastId,
                 duration: 10000
             });
@@ -86,7 +85,7 @@ const requestNewBlog = async (event, handleTextInTextArea, blog, setIsTextAreaDi
 export default function Home() {
     const [isOpen, setIsOpen] = useState(false);
     const [textInTextArea, setTextInTextArea] = useState("");
-    const [isTextAreaDisable, setIsTextAreaDisable] = useState(false)
+    const [isFetching, setIsFetching] = useState(false)
 
     const changeHandler = (event) => {
         setTextInTextArea(event.target.value);
@@ -119,7 +118,7 @@ export default function Home() {
                     <form
                         action=""
                         onSubmit={(event) => {
-                            requestNewBlog(event, setTextInTextArea, textInTextArea, setIsTextAreaDisable);
+                            requestNewBlog(event, setTextInTextArea, textInTextArea, setIsFetching);
                         }}
                         method="POST"
                         className="mx-auto mt-8 max-w-2xl sm:mt-9"
@@ -137,18 +136,18 @@ export default function Home() {
                                         minLength={99}
                                         required
                                         value={textInTextArea}
-                                        disabled={isTextAreaDisable}
+                                        disabled={isFetching}
                                         onChange={changeHandler}
-                                        className="block h-72 w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fuchsia-400 sm:text-sm sm:leading-6"
+                                        className="block h-72 w-full disabled:opacity-75 disabled:shadow-none rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fuchsia-400 sm:text-sm sm:leading-6"
                                     />
                                 </div>
                             </div>
                         </div>
                         <div className="mt-10">
                             <button
-                                disabled={textInTextArea.length < 99}
+                                disabled={isFetching}
                                 type="submit"
-                                className="block w-full rounded-md bg-fuchsia-600 hover:bg-fuchsia-500 disabled:opacity-40 disabled:hover:opacity-40 disabled:bg-fuchsia-400 disabled:hover:bg-fuchsia-400 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className={`block w-full rounded-md ${textInTextArea.length < 99 ? 'opacity-40 hover:opacity-40 bg-fuchsia-400  hover:bg-fuchsia-400' : 'bg-fuchsia-600 hover:bg-fuchsia-500'} disabled:opacity-40 disabled:hover:opacity-40 disabled:bg-fuchsia-400  disabled:hover:bg-fuchsia-400' cursor-pointer ${isFetching && 'cursor-progress'} hover:bg-fuchsia-500 ${textInTextArea.length === 0  && 'cursor-not-allowed'} px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
                             >
                                 Submit
                             </button>

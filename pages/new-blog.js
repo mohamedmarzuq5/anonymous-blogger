@@ -6,14 +6,7 @@ import { useState } from 'react';
 import BgEffect from '@/components/bg-effect';
 import toast, { Toaster } from 'react-hot-toast';
 
-const blogRequestURL =
-  'https://anonymous-blogger-0xci.onrender.com/users/add-blog';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-poppins',
-});
+const blogRequestURL = 'http://localhost:5000/users/add-blog';
 
 const epilogue = Epilogue({
   subsets: ['latin'],
@@ -27,16 +20,17 @@ const space_mono = Space_Mono({
   variable: '--font-space_mono',
 });
 
-const requestNewBlog = async (
+const addNewBlog = async (
   event,
-  handleTextInTextArea,
+  handleTextArea,
+  handleTextInput,
   blog,
   setIsFetching
 ) => {
   event.preventDefault();
-  if (blog.length < 99) {
+  if (blog.content.length < 99) {
     toast.error(
-      `${blog.length} chars for a blog🤷‍♂️? \n Minimum 99 chars is required`
+      `${blog.content.length} chars for a blog🤷‍♂️? \n Minimum 99 chars is required`
     );
   } else {
     setIsFetching(true);
@@ -56,47 +50,32 @@ const requestNewBlog = async (
         throw new Error();
       }
 
-      handleTextInTextArea('');
+      handleTextInput('');
+      handleTextArea('');
       setIsFetching(false);
 
       toast.success('Forwarded to Admin!', {
         id: toastId,
-        duration: 10000,
+        duration: 5000,
       });
     } catch (error) {
       // console.error(error);
-      toast.error('Error!', {
+      toast.error('Something Error!', {
         id: toastId,
       });
 
-      handleTextInTextArea('');
+      handleTextInput('');
+      handleTextArea('');
       setIsFetching(false);
     }
   }
 };
 
-// function notify(event, handleTextInTextArea, blog) {
-//     event.preventDefault();
-//     if (blog.length > 99) {
-//         toast.promise(requestNewBlog(event, handleTextInTextArea, blog), {
-//             loading: 'Loading',
-//             success: 'Successfully Send',
-//             error: 'Error when fetching',
-//         });
-//     } else {
-//         toast.error("This is too lengthy 😂", {duration: 4000})
-//     }
-
-// }
-
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-  const [textInTextArea, setTextInTextArea] = useState('');
+  const [textArea, setTextArea] = useState('');
+  const [titleInput, setTitleInput] = useState('');
   const [isFetching, setIsFetching] = useState(false);
-
-  const changeHandler = (event) => {
-    setTextInTextArea(event.target.value);
-  };
 
   return (
     <main
@@ -132,10 +111,11 @@ export default function Home() {
             data-aos="fade-up"
             action=""
             onSubmit={(event) => {
-              requestNewBlog(
+              addNewBlog(
                 event,
-                setTextInTextArea,
-                textInTextArea,
+                setTextArea,
+                setTitleInput,
+                { title: titleInput, content: textArea },
                 setIsFetching
               );
             }}
@@ -144,9 +124,39 @@ export default function Home() {
           >
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
+                <label
+                  htmlFor="company"
+                  className="block text-sm font-semibold leading-6 text-white"
+                >
+                  Title
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    required
+                    minLength={3}
+                    maxLength={21}
+                    value={titleInput}
+                    onChange={(event) => {
+                      setTitleInput(event.target.value);
+                    }}
+                    disabled={isFetching}
+                    className="block w-full disabled:opacity-75 disabled:shadow-none rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fuchsia-400 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="blog"
+                  className="block text-sm font-semibold leading-6 text-white"
+                >
+                  Content
+                </label>
                 {/* <label htmlFor="message" className="block text-sm font-semibold leading-6">
-                                    Message
-                                </label> */}
+                  Message
+                  </label> */}
                 <div className="mt-2.5">
                   <textarea
                     name="blog"
@@ -154,9 +164,11 @@ export default function Home() {
                     rows={10}
                     minLength={99}
                     required
-                    value={textInTextArea}
+                    value={textArea}
                     disabled={isFetching}
-                    onChange={changeHandler}
+                    onChange={(event) => {
+                      setTextArea(event.target.value);
+                    }}
                     className="block h-72 w-full disabled:opacity-75 disabled:shadow-none rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fuchsia-400 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -167,13 +179,13 @@ export default function Home() {
                 disabled={isFetching}
                 type="submit"
                 className={`block w-full rounded-md ${
-                  textInTextArea.length < 99
-                    ? 'opacity-40 hover:opacity-40 bg-fuchsia-600  hover:bg-fuchsia-600'
-                    : 'bg-fuchsia-600 hover:bg-fuchsia-500 focus:ring-3 '
-                } disabled:opacity-40 disabled:hover:opacity-40 disabled:bg-fuchsia-600  disabled:hover:bg-fuchsia-600 disabled:cursor-not-allowed cursor-pointer ${
+                  textArea.length < 99 || titleInput < 3
+                    ? 'opacity-40 hover:opacity-40 bg-fuchsia-500  hover:bg-fuchsia-500'
+                    : 'bg-fuchsia-500 hover:bg-fuchsia-400 focus:ring-3 '
+                } disabled:opacity-40 disabled:hover:opacity-40 disabled:bg-fuchsia-500  disabled:hover:bg-fuchsia-500 disabled:cursor-not-allowed cursor-pointer ${
                   isFetching && 'cursor-progress'
-                } hover:bg-fuchsia-500 ${
-                  textInTextArea.length === 0 && 'cursor-not-allowed'
+                } hover:bg-fuchsia-400 ${
+                  textArea.length === 0 && 'cursor-not-allowed'
                 } px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
               >
                 Submit

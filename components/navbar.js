@@ -17,22 +17,16 @@ export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
                        
                         <li data-aos="fade-in" data-aos-duration="1500">
                             <Link href={navData.link[0]} className="flex gap-x-1 py-2 pl-3 pr-4 rounded md:border-0 md:p-0 opacity-100 hover:opacity-75 md:hover:bg-transparent"><span className="continuous-line">{navData.text[0]}</span>{" "}
-                                {navData.text[1] === 'New Blog' ? <Image
-                                    className="lg:w-[25px] hidden"
-                                    src=""
-                                    width={25}
-                                    height={25}
-                                    alt=""
-                                />:""}
+                                {""}
                             </Link>
                         </li>
                         <li data-aos="fade-in" data-aos-duration="2000">
                             <Link href={navData.link[1]} className="flex gap-x-1 py-2 pl-3 pr-4 rounded md:border-0 md:p-0 opacity-100 hover:opacity-75 md:hover:bg-transparent"><span className="continuous-line">{navData.text[1]}</span>{" "}
                                 {navData.text[1] === 'New Blog' ? <Image
-                                    className="lg:w-[25px]"
+                                    className="w-[20px] lg:w-[25px]"
                                     src="/assets/icons/plus-square.svg"
-                                    width={20}
-                                    height={20}
+                                    width={28}
+                                    height={28}
                                     alt="square-icon"
                                 />:""}
                             </Link>
@@ -40,10 +34,10 @@ export default function NavBar({ navData, isOpen, eventIsOpen, space_mono }) {
                         <li data-aos="fade-in" data-aos-duration="2500">
                             <Link  href="#" className="py-2 pl-3 pr-4 rounded md:border-0 md:p-0 opacity-100 hover:opacity-75 md:hover:bg-transparent flex gap-x-1"><span className="continuous-line">Search</span>{" "}
                                 <Image
-                                    className="lg:w-[25px]"
+                                    className="w-[20px] lg:w-[25px]"
                                     src="/assets/icons/search-icon.svg"
-                                    width={20}
-                                    height={20}
+                                    width={28}
+                                    height={28}
                                     alt="search-icon"
                                 />
                             </Link>

@@ -34,8 +34,6 @@ export default function Home({blogs}) {
 
   };
 
-  const count = { blog: '256', views: '256' };
-
   const font = { poppins: poppins.variable, space_mono: space_mono.variable };
 
   const DOMTempArr = [];
@@ -46,7 +44,6 @@ export default function Home({blogs}) {
         // color={'bg-gradient-to-r from-[#B721FF] to-[#21D4FD]'}
         blog={blogs[i]}
         font={font}
-        blogs={true}
       />
     );
   }
@@ -79,7 +76,7 @@ export default function Home({blogs}) {
 
 export async function getStaticProps() {
   try {
-    const blogsResponse = await fetch('http://localhost:5000/users/blogs');
+    const blogsResponse = await fetch('https://anonymous-blogger-0xci.onrender.com/users/blogs');
     const blogsObj = await blogsResponse.json();
 
     if (blogsResponse.status === 500 || !blogsObj || blogsObj.error) {

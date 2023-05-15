@@ -27,21 +27,25 @@ const space_mono = Space_Mono({
   variable: '--font-space_mono',
 });
 
-export default function Home() {
+export default function Home({blogs}) {
   const [isOpen, setIsOpen] = useState(false);
 
-  //content
-  const blogContent = {
-    title: 'How To Defeat Browser',
-    content:
-      'Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem iLorem ipsum dolor sit amet consecteturLore',
-    createdAt: 1691009465599,
-    viewers: 0,
-  };
-
-  const count = { blog: '256', views: '256' };
-
   const font = { poppins: poppins.variable, space_mono: space_mono.variable };
+
+  const DOMTempArr = [];
+  for (let i = 0; i < blogs?.length; i++) {
+    DOMTempArr.push(
+      <BlogCard
+      color={i === 0 ? ['B721FF', '21D4FD'] : i === 1 ? ['EB90FF', '9a49e1cc'] : ['FA71CD', 'C471F5']}
+        key={blogs[i]._id} 
+        blog={blogs[i]}
+        font={font}
+        blogs={true}
+      />
+    );
+  }
+  
+  const count = { blog: '256', views: '256' };
 
   return (
     <main
@@ -72,21 +76,7 @@ export default function Home() {
         </Link>
 
         <div className="flex gap-9 md:gap-3 lg:gap-5 xl:gap-9 justify-between md:flex-row flex-col">
-          <BlogCard
-            color={'bg-gradient-to-r from-[#B721FF] to-[#21D4FD]'}
-            blog={blogContent}
-            font={font}
-          />
-          <BlogCard
-            color={'bg-gradient-to-r from-[#EB90FF] to-[#9a49e1cc]'}
-            blog={blogContent}
-            font={font}
-          />
-          <BlogCard
-            color={'bg-gradient-to-r from-[#FA71CD] to-[#C471F5]'}
-            blog={blogContent}
-            font={font}
-          />
+          {DOMTempArr}
         </div>
       </div>
 
@@ -134,4 +124,34 @@ export default function Home() {
       />
     </main>
   );
+}
+
+
+export async function getStaticProps() {
+  try {
+    const blogsResponse = await fetch('https://anonymous-blogger-0xci.onrender.com/users/blogs?sort=true');
+    const blogsObj = await blogsResponse.json();
+
+    if (blogsResponse.status === 500 || !blogsObj || blogsObj.error) {
+      throw new Error('Problems with the server');
+    }
+    const blogs = blogsObj.blogs;
+    if (blogs.length === 0) {
+      throw new Error('No Blogs In the Server');
+    }
+
+    return {
+      props: {
+        blogs: blogs,
+      },
+    };
+  } catch (error) {
+    console.log('Error: ' + error.message);
+
+    return {
+      props: {
+        error: error.message,
+      },
+    };
+  }
 }

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import BgEffect from '@/components/bg-effect';
 import toast, { Toaster } from 'react-hot-toast';
 
-const blogRequestURL = 'http://localhost:5000/users/add-blog';
+const blogRequestURL = 'https://anonymous-blogger-0xci.onrender.com/users/add-blog';
 
 const epilogue = Epilogue({
   subsets: ['latin'],

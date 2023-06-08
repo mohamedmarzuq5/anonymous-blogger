@@ -11,7 +11,7 @@ export default function BlogCard({ color, blog, font, blogs }) {
       >
         <Link
           className={`w-full sm:h-48 lg:h-60 md:h-64 flex rounded-2xl text-[#CCCCCC] bg-[#1E1E1E] p-5 sm:p-5 md:p-4 lg:p-7`}
-          href=""
+          href={`/blog/${blog._id}`}
         >
           <div className="flex flex-col justify-between gap-2 sm:gap-1 md:gap-1">
             <h2 className="text-xl font-bold xl:text-2xl">{blog.title}</h2>

@@ -8,6 +8,7 @@ import Footer from '@/components/footer';
 import NavBar from '@/components/navbar';
 import NewsLetter from '@/components/home/news-letter';
 import BgEffect from '@/components/bg-effect';
+import { SERVER_URL } from '@/config/backend';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -129,7 +130,7 @@ export default function Home({blogs}) {
 
 export async function getStaticProps() {
   try {
-    const blogsResponse = await fetch('https://anonymous-blogger-0xci.onrender.com/users/blogs?sort=true');
+    const blogsResponse = await fetch(`${SERVER_URL}/users/blogs?sort=true`);
     const blogsObj = await blogsResponse.json();
 
     if (blogsResponse.status === 500 || !blogsObj || blogsObj.error) {
@@ -147,11 +148,5 @@ export async function getStaticProps() {
     };
   } catch (error) {
     console.log('Error: ' + error.message);
-
-    return {
-      props: {
-        error: error.message,
-      },
-    };
   }
 }

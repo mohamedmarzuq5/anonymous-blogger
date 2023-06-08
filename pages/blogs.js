@@ -4,6 +4,7 @@ import BlogCard from '@/components/blog-card';
 import NavBar from '@/components/navbar';
 import BgEffect from '@/components/bg-effect';
 import Footer from '@/components/footer';
+import { SERVER_URL } from '@/config/backend';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -27,8 +28,6 @@ export default function Home({blogs}) {
   const [isOpen, setIsOpen] = useState(false);
   // const [sort, setSort] = useState('trending');
   const [DOMBlogArr, SetDOMBlogArr] = useState([null]);
-
-  console.log(blogs);
 
   const blogsFetcherFunction = async () => {
 
@@ -76,7 +75,7 @@ export default function Home({blogs}) {
 
 export async function getStaticProps() {
   try {
-    const blogsResponse = await fetch('https://anonymous-blogger-0xci.onrender.com/users/blogs');
+    const blogsResponse = await fetch(`${SERVER_URL}/users/blogs`);
     const blogsObj = await blogsResponse.json();
 
     if (blogsResponse.status === 500 || !blogsObj || blogsObj.error) {
@@ -94,11 +93,5 @@ export async function getStaticProps() {
     };
   } catch (error) {
     console.log('Error: ' + error.message);
-
-    return {
-      props: {
-        error: error.message,
-      },
-    };
   }
 }

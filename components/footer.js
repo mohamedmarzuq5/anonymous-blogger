@@ -11,7 +11,7 @@ export default function Footer({ font }) {
         >
           No Copyright Issues. Feel free to Copy{' '}
           <span className={`${font.epilogue} font-serif`}>:-)</span> <br />
-          Design and built by <Link className=" pb-[7px] underline underline-offset-2 hover:opacity-80" href={'https://twitter.com/mohamedmarzuq5'} target="blank">Mohamed</Link>👨‍💻
+          Design and Built by <Link className="  hover:opacity-80" href={'https://twitter.com/mohamedmarzuq5'} target="blank"><span className="pb-[7px] underline underline-offset-2">Mohamed</span>👨‍💻</Link>
         </p>
       </div>
     </footer>

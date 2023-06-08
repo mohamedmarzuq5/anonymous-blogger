@@ -5,8 +5,9 @@ import NavBar from '@/components/navbar';
 import { useState } from 'react';
 import BgEffect from '@/components/bg-effect';
 import toast, { Toaster } from 'react-hot-toast';
+import { SERVER_URL } from '@/config/backend';
 
-const blogRequestURL = 'https://anonymous-blogger-0xci.onrender.com/users/add-blog';
+const blogRequestURL = `${SERVER_URL}/users/add-blog`;
 
 const epilogue = Epilogue({
   subsets: ['latin'],
